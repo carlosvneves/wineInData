@@ -1,0 +1,109 @@
+---
+title: "wineInData"
+format: 
+    html:
+        code-fold: true
+jupyter: python3
+editor:
+  render-on-save: false
+---
+
+## Introdução 
+
+Descrição da atividade.
+
+Imagine agora, que você vai atuar como Expert em Data Analytics em uma empresa que exporta vinhos do Brasil para o mundo todo.
+
+Sua área é recém-criada dentro da empresa, e você será responsável pelos relatórios iniciais a serem apresentados em uma reunião de investidores e acionistas, explicando a quantidade de vinhos exportados e os fatores externos que podem vir a surgir e que interferem nas análises:
+
+- 	Dados climáticos.
+- 	Dados demográficos.
+- 	Dados econômicos.
+- 	Dados de avaliações de vinhos.
+  
+O Head de Dados pediu para que você construísse uma tabela contendo as seguintes informações:
+-   País de origem (Brasil).
+- 	País de destino.
+- 	Quantidade em litros de vinho exportado (utilize: 1KG =1L).
+- 	Valor em US$.
+
+Os dados que lhe forneceram são de uma vinícola parceira, e podem ser encontrados  [aqui](http://vitibrasil.cnpuv.embrapa.br/index.php?opcao=opt_01).
+
+
+### Contexto
+
+- Falar de modo geral sobre o mercado
+
+## Análise de Dados
+
+Primeiro é necessário importar as bibliotecas para manipulação de dados e elaboração de gráficos (*pandas*, *matplotlib*, *seaborn*)
+
+```{python}
+#| echo: false
+# importação das bibliotecas
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+
+```
+
+### Dados de exportação de vinhos 
+
+Descrição do conjunto de dados: 
+
+|nome do arquivo | descrição | fonte | tamanho | 
+| --- | --- | ---|
+
+
+```{python}
+
+# leitura dos arquivos de dados sobre vinhos
+exp_vinho = pd.read_csv("../data/ExpVinho.csv", sep=";")
+exp_vinho.drop("Id", axis=1, inplace=True)
+exp_vinho.index = exp_vinho["País"]
+exp_vinho.drop("País", axis=1, inplace=True)
+```
+
+
+### Fontes de Dados
+
+### Metodologia
+
+
+## Conclusão
+
+
+
+
+You can embed executable code like this:
+
+```{python}
+1 + 1
+```
+
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+## Plots
+
+See @fig-polar for an example of rendering plots as figures:
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+#| code-fold: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+Note that we included the cell option `fold: true` to hide the code by default (click the *Code* button to show it).
